@@ -1,7 +1,10 @@
-import { api } from "../../src/http/api";
+import './__mocks__/constants'
 
-test("fetchPokemons", async () => {
-  const response = await api("/pokemon?limit=20");
-  expect(response.status).toBe(200);
-  expect(response.data.results.length).toBe(20);
-});
+import Service from 'core/service'
+
+const service = new Service()
+
+test('fetchPokemons', async () => {
+  const response = await service.get('/pokemon', { limit: 20 })
+  expect(response.results.length).toBe(20)
+})
