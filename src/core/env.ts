@@ -1,8 +1,9 @@
 import has from 'lodash/has'
 import merge from 'lodash/merge'
 import trim from 'lodash/trim'
+import { APP_CONFIGS, EXTERNAL_CONFIGS, importMetaEnv } from './constants'
 
-const metaEnv: ImportMeta['env'] = merge({}, import.meta.env, __APP_CONFIGS__, __EXTERNAL_CONFIGS__)
+const metaEnv: ImportMeta['env'] = merge({}, importMetaEnv, APP_CONFIGS, EXTERNAL_CONFIGS)
 
 type EnvFunc = <T = unknown>(key: string, defaultValue?: T) => T
 
